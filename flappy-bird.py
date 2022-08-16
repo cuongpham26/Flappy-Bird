@@ -12,7 +12,6 @@ score = 0
 score_surface = font.render("Score " + str(score), True, (255, 255, 255))
 score_rectangle = score_surface.get_rect(center = (288, 100))
 
-ready = True
 ready_surface = pygame.transform.scale2x(pygame.image.load("images/ready.png").convert_alpha())
 ready_rectangle = ready_surface.get_rect(center=(216, 384))
 
@@ -131,7 +130,7 @@ while True:
                 game_start = True
 
         continue
-
+    print("game_speed {}".format(game_speed))
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             pygame.quit()
@@ -144,9 +143,13 @@ while True:
                 game_over = False
                 pipe_list.clear()
                 pipe_list_for_score.clear()
+                already.clear()
                 bird_rectangle = bird_list[0].get_rect(center = (100, 384))
                 bird_velocity = 0
                 score = 0
+                game_speed = 2
+                pygame.time.set_timer(spawn_pipe, int(3000/game_speed))
+                
             elif event.key == pygame.K_x and game_over:
                 pygame.quit()
                 sys.exit()
