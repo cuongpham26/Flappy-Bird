@@ -130,7 +130,6 @@ while True:
                 game_start = True
 
         continue
-    print("game_speed {}".format(game_speed))
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             pygame.quit()
